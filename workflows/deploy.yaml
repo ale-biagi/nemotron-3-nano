@@ -1,0 +1,8 @@
+apiVersion: ai.sap.com/v1alpha1
+kind: InferenceDeployment
+metadata:
+  name: nemotron-3-nano-deployment
+spec:
+  template:
+    name: nemotron-3-nano
+  replicas: 1

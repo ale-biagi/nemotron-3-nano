@@ -1,0 +1,29 @@
+apiVersion: ai.sap.com/v1alpha1
+kind: ServingTemplate
+metadata:
+  name: nemotron-3-nano
+spec:
+  template:
+    spec:
+      containers:
+        - name: inference
+          image: alebiagi/nemotron-3-nano:latest
+          env:
+            - name: HF_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: huggingface-secret
+                  key: token
+            - name: HF_HOME
+              value: /models
+          volumeMounts:
+            - name: hf-cache
+              mountPath: /models
+          ports:
+            - containerPort: 8080
+      volumes:
+        - name: hf-cache
+          emptyDir: {} 
+      resources:
+        limits:
+          nvidia.com/gpu: 1
