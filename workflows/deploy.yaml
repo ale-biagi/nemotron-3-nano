@@ -1,5 +1,5 @@
 apiVersion: ai.sap.com/v1alpha1
-kind: DeploymentTemplate
+kind: Deployment
 metadata:
   name: nemotron-3-nano-deployment
 spec:
